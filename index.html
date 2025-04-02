@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Violation Monitoring System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="min-h-screen flex flex-col">
+        <!-- Navigation -->
+        <nav class="bg-blue-800 text-white shadow-lg">
+            <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-traffic-light text-2xl"></i>
+                    <span class="text-xl font-semibold">Traffic Monitor</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="#" class="hover:text-blue-200">Welcome</a>
+                    <a href="#" class="hover:text-blue-200">Live Camera</a>
+                    <a href="#" class="hover:text-blue-200">Number Plate</a>
+                    <a href="#" class="hover:text-blue-200">Clip Search</a>
+                    <a href="#" class="hover:text-blue-200">Violations</a>
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-user-circle"></i>
+                        <span>Login</span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="flex-grow container mx-auto px-4 py-8">
+            <!-- Welcome Section -->
+            <section id="welcome" class="mb-12">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4">Welcome, <span id="username" class="text-blue-600">User</span></h2>
+                    <p class="text-gray-600 mb-6">Traffic violation monitoring system dashboard</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <!-- Feature Cards -->
+                        <div class="bg-blue-50 rounded-lg p-4 border border-blue-100 hover:shadow-md transition">
+                            <div class="flex items-center mb-3">
+                                <i class="fas fa-video text-blue-600 mr-2"></i>
+                                <h3 class="font-semibold text-blue-800">Live Camera</h3>
+                            </div>
+                            <p class="text-sm text-gray-600">View real-time traffic camera feeds</p>
+                        </div>
+
+                        <div class="bg-blue-50 rounded-lg p-4 border border-blue-100 hover:shadow-md transition">
+                            <div class="flex items-center mb-3">
+                                <i class="fas fa-car text-blue-600 mr-2"></i>
+                                <h3 class="font-semibold text-blue-800">Number Plate</h3>
+                            </div>
+                            <p class="text-sm text-gray-600">Search vehicles by number plate</p>
+                        </div>
+
+                        <div class="bg-blue-50 rounded-lg p-4 border border-blue-100 hover:shadow-md transition">
+                            <div class="flex items-center mb-3">
+                                <i class="fas fa-search text-blue-600 mr-2"></i>
+                                <h3 class="font-semibold text-blue-800">Clip Search</h3>
+                            </div>
+                            <p class="text-sm text-gray-600">Search video clips by criteria</p>
+                        </div>
+
+                        <div class="bg-blue-50 rounded-lg p-4 border border-blue-100 hover:shadow-md transition">
+                            <div class="flex items-center mb-3">
+                                <i class="fas fa-exclamation-triangle text-blue-600 mr-2"></i>
+                                <h3 class="font-semibold text-blue-800">Violations</h3>
+                            </div>
+                            <p class="text-sm text-gray-600">View traffic violation records</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Live Camera Section -->
+            <section id="live-camera" class="mb-12 hidden">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4">Live Camera Feed</h2>
+                    <div class="aspect-w-16 aspect-h-9 bg-gray-200 rounded-lg overflow-hidden">
+                        <div class="flex items-center justify-center h-64 bg-gray-100">
+                            <i class="fas fa-video-slash text-4xl text-gray-400"></i>
+                            <span class="ml-2 text-gray-500">Camera feed will appear here</span>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex space-x-4">
+                        <select class="border rounded px-3 py-2">
+                            <option>Select Camera Location</option>
+                            <option>Main Intersection</option>
+                            <option>Highway Entrance</option>
+                            <option>Downtown</option>
+                        </select>
+                        <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                            <i class="fas fa-play mr-2"></i>Start Stream
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Number Plate Section -->
+            <section id="number-plate" class="mb-12 hidden">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4">Number Plate Search</h2>
+                    <div class="flex mb-6">
+                        <input type="text" placeholder="Enter vehicle number" class="border rounded-l px-4 py-2 w-full">
+                        <button class="bg-blue-600 text-white px-6 py-2 rounded-r hover:bg-blue-700">
+                            <i class="fas fa-search mr-2"></i>Search
+                        </button>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="border rounded-lg p-4">
+                            <div class="bg-gray-100 h-40 mb-2 flex items-center justify-center">
+                                <i class="fas fa-car text-4xl text-gray-400"></i>
+                            </div>
+                            <p class="text-sm text-gray-600">Vehicle: ABC-1234</p>
+                            <p class="text-sm text-gray-600">Detected: 2023-10-15 14:30</p>
+                        </div>
+                        <!-- More vehicle cards would appear here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Violation Section -->
+            <section id="violations" class="mb-12 hidden">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4">Violation Records</h2>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full bg-white">
+                            <thead>
+                                <tr class="bg-gray-100">
+                                    <th class="py-2 px-4 border">Vehicle</th>
+                                    <th class="py-2 px-4 border">Violation</th>
+                                    <th class="py-2 px-4 border">Location</th>
+                                    <th class="py-2 px-4 border">Date/Time</th>
+                                    <th class="py-2 px-4 border">Evidence</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="py-2 px-4 border">ABC-1234</td>
+                                    <td class="py-2 px-4 border">Red Light</td>
+                                    <td class="py-2 px-4 border">Main Intersection</td>
+                                    <td class="py-2 px-4 border">2023-10-15 14:30</td>
+                                    <td class="py-2 px-4 border text-blue-600 hover:underline cursor-pointer">View</td>
+                                </tr>
+                                <!-- More violation records would appear here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-gray-800 text-white py-6">
+            <div class="container mx-auto px-4 text-center">
+                <p>Traffic Violation Monitoring System &copy; 2023</p>
+                <p class="text-sm text-gray-400 mt-2">Powered by AI and Computer Vision</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Simple navigation functionality
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = e.target.getAttribute('href').substring(1);
+                
+                // Hide all sections
+                document.querySelectorAll('main > section').forEach(section => {
+                    section.classList.add('hidden');
+                });
+                
+                // Show target section
+                if(target) {
+                    document.getElementById(target).classList.remove('hidden');
+                } else {
+                    document.getElementById('welcome').classList.remove('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
